@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Testbatterie-Aufgabe: Aufmerksamkeit</title>
+
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.0b1.min.css"/>       
+        <link rel="stylesheet" href="css/style.css" media="screen and (orientation: landscape)" type="text/css">  
+
+        <script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.0rc2.min.js"></script>
+        <script type="text/javascript" src="js/jstorage.js"></script>
+        <script type="text/javascript" src="js/aufmerksamkeitScript.js"></script>
+
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    </head>
+
+
+    <body>
+
+        <!--startpage for neurocare testbatterie with task: aufmerksamkeit-->
+        <div data-role="page" id="aufmerksamkeitStart" data-dom-cache=true class="startPage" >
+
+
+            <div data-role="content">
+
+                <div class="testname">Aufgabe<br>Aufmerksamkeit</div>
+
+
+
+            </div>
+
+            <!--script used to show start page for few seconds and the to switch to intro page-->
+            <script type="text/javascript">
+
+                $(document).delegate('#aufmerksamkeitStart', 'pageshow', function () {
+
+                    function showJustForWhile() {
+                        setTimeout(function () {
+                            $.mobile.changePage('#alertnessStart', {transition: "flip"});
+                        }, 4000);
+
+                    }
+
+
+                    // this event allows clicking the button faster than onclick event 
+                    $("div[data-type*='reactionButtonTrial']").bind("tap", function () {
+                        showNextTrial();
+                    });
+
+
+                    showJustForWhile();
+
+                });
+            </script>
+
+
+        </div> 
+
+
+        <!--startpage for neurocare testbatterie with task: aufmerksamkeit task alertness-->
+        <div data-role="page" id="alertnessStart" data-dom-cache=true class="startPage" >
+
+
+            <div data-role="content">
+
+                <div class="testname">Teilaufgabe<br>Alertness</div>
+
+
+
+            </div>
+
+            <!--script used to show start page for few seconds and the to switch to intro page-->
+            <script type="text/javascript">
+
+                $(document).delegate('#alertnessStart', 'pageshow', function () {
+
+                    function showJustForWhile() {
+                        setTimeout(function () {
+                            $.mobile.changePage('#alertnessIntro', {transition: "flip"});
+                        }, 2000);
+
+                    }
+
+
+                    showJustForWhile();
+
+                });
+            </script>
+
+
+        </div> 
+
+        <!--intro page for neurocare testbatterie containing a small introduction to the task alertness-->
+        <div data-role="page" id="alertnessIntro" data-dom-cache=true class="introPage" >
+
+            <div data-role="content">
+
+                <image src="css\images\icons\info.png" class="infoIcon"/>
+
+                <center>
+                    <p class="introText">
+
+                        Bei dieser Aufgabe geht es um schnelle Reaktionen.</br>
+                        Gleich sehen Sie in der Mitte des Bildschirms ein schwarzes Fixierkreuz.
+                        Richten Sie Ihren Blick auf das Kreuz. Immer wieder wird hier ein blauer Punkt erscheinen.</br>
+                        Drücken Sie die Reaktionstaste unten im Bild sobald Sie den blauen Punkt sehen.
+                        Reagieren Sie so schnell wie möglich. Sie haben nur wenig Zeit für Ihre Reaktion.
+
+                    </p>
+                </center>
+
+
+                <!--only for tests! later uncomment the first line!-->
+                <image src="css\images\btns-bg\bt-weiter.png" class="defaultButton" onclick="goToDemo();"/>
+
+            </div>
+
+
+        </div>
+
+
+        <!--first demo page for neurocare testbatterie containing a demonstration example to the task aufmerksamkeit-->
+        <div data-role="page" id="aufmerksamkeitDemo1" data-dom-cache=true class="whitePage">
+
+            <div data-role="content">
+
+                <div class="cross">  </div>
+
+
+                <div class="rectangle"> </div>
+
+
+                <div class="speech" id="firstBubble" style="visibility: hidden;">Richten Sie Ihren Blick auf das Fixierkreuz</div>
+
+
+            </div>
+
+
+            <script type="text/javascript">
+
+                $(document).delegate('#aufmerksamkeitDemo1', 'pageshow', function () {
+
+                    function showSpeechBubble() {
+                        setTimeout(function () {
+
+                            // show bubble hint
+                            $("#firstBubble").css("visibility", "visible");
+
+
+                        }, 1000);
+
+
+                        setTimeout(function () {
+                            // hide bubble hint
+                            $("#firstBubble").css("visibility", "hidden");
+
+                            $.mobile.changePage('#aufmerksamkeitDemo2', {transition: "none"});
+
+                        }, 4000);
+
+                    }
+
+
+                    showSpeechBubble();
+
+                });
+            </script>
+
+
+        </div> 
+
+
+
+        <!--second demo page for neurocare testbatterie containing a demonstration example to the task aufmerksamkeit-->
+        <div data-role="page" id="aufmerksamkeitDemo2" data-dom-cache=true class="whitePage">
+
+            <div data-role="content">
+
+                <div class="kreis">  </div>
+
+
+                <div class="rectangle"> </div>
+
+
+                <div class="speech" id="secondBubble" style="top: 40%;left: 60%;visibility: hidden;" >Jetzt müssen Sie drücken!</div>
+
+
+            </div>
+
+
+            <script type="text/javascript">
+
+                $(document).delegate('#aufmerksamkeitDemo2', 'pageshow', function () {
+
+                    function showSpeechBubble() {
+                        setTimeout(function () {
+
+                            // show bubble hint
+                            $("#secondBubble").css("visibility", "visible");
+
+
+                        }, 500);
+
+
+                        setTimeout(function () {
+                            // hide bubble hint
+                            $("#secondBubble").css("visibility", "hidden");
+
+                            $.mobile.changePage('#aufmerksamkeitDemo3', {transition: "none"});
+
+                        }, 4000);
+
+                    }
+
+                    showSpeechBubble();
+
+
+
+                });
+            </script>
+
+
+        </div> 
+
+        <!--third demo page for neurocare testbatterie containing a demonstration example to the task aufmerksamkeit-->
+        <div data-role="page" id="aufmerksamkeitDemo3" data-dom-cache=true class="whitePage">
+
+            <div data-role="content">
+
+                <div class="cross">  </div>
+
+
+                <div class="rectangle"> </div>
+
+
+
+
+            </div>
+
+
+            <script type="text/javascript">
+
+                $(document).delegate('#aufmerksamkeitDemo3', 'pageshow', function () {
+
+                    function switchToNextPage() {
+
+                        setTimeout(function () {
+
+                            $.mobile.changePage('#aufmerksamkeitDemo4', {transition: "none"});
+
+                        }, 3000);
+
+                    }
+
+
+                    switchToNextPage();
+
+                });
+            </script>
+
+
+        </div> 
+
+
+        <!--fourth demo page for neurocare testbatterie containing a demonstration example to the task aufmerksamkeit-->
+        <div data-role="page" id="aufmerksamkeitDemo4" data-dom-cache=true class="whitePage">
+
+            <div data-role="content">
+
+                <div class="kreis">  </div>
+
+
+                <div class="rectangle"> </div>
+
+                <div class="speech" id="thirdBubble" style="top: 40%;left: 60%;visibility: hidden;" >Jetzt müssen Sie drücken!</div>
+
+
+            </div>
+
+
+            <script type="text/javascript">
+
+                $(document).delegate('#aufmerksamkeitDemo4', 'pageshow', function () {
+
+                    function showSpeechBubble() {
+
+                        setTimeout(function () {
+
+                            // show bubble hint
+                            $("#thirdBubble").css("visibility", "visible");
+
+                        }, 500);
+
+
+                        setTimeout(function () {
+
+                            // hide bubble hint
+                            $("#thirdBubble").css("visibility", "hidden");
+                            $.mobile.changePage('#bridgingPage', {transition: "flip"});
+
+                        }, 3000);
+                    }
+
+
+                    showSpeechBubble();
+
+                });
+            </script>
+
+
+        </div> 
+
+
+
+        <!--bridging page for the task aufmerksamkeit-->
+        <div data-role="page" id="bridgingPage" data-dom-cache=true class="introPage">
+
+            <div data-role="content">
+
+                <image src="css\images\icons\tipp.png" class="infoIcon"/>
+
+                <center>
+                    <p class="introTextTop">
+                        Machen Sie zunächst selbständig einen Probedurchgang
+                    </p>
+
+                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showCountDown();"/>
+                </center>
+
+
+            </div>
+
+
+
+
+        </div> 
+
+
+        <!--countdown page for the task aufmerksamkeit-->
+        <div data-role="page" id="countdownPage" data-dom-cache=true class="whitePage">
+
+            <div data-role="content">
+
+                <p class="TitleMiddleTop">
+                    Start in
+                </p>
+
+                <div class="countdownCircle" id="countdown">  3  </div>
+
+
+            </div>
+
+            <script type="text/javascript">
+
+                $(document).delegate('#countdownPage', 'pageshow', function () {
+
+
+                    var countdownTimer;
+                    function showCountdown() {
+
+                        // get text in div (3)
+                        var number = parseInt($('#countdown').html(), 10);
+
+                        countdownTimer = setTimeout(function () {
+                            // decrement counter
+                            number--;
+                            // set counter value to countdown
+                            $("#countdown").html(number);
+
+                            if (number === 0) {
+
+                                if (trialAlreadyShown) {
+                                    // go to task
+                                    $.mobile.changePage('#pageCross', {transition: "flip"});
+                                }
+                                else {
+                                    // go to trial
+                                    $.mobile.changePage('#trialPageCross', {transition: "flip"});
+                                }
+
+                                setTimeout(function () {
+                                    // reset countdown
+                                    $("#countdown").html("3");
+
+                                    // clear timeout
+                                    clearTimeout(countdownTimer);
+
+                                }, 1000);
+                            }
+                            // repeat counting
+                            else
+                                showCountdown();
+
+                        }, 1000);
+                    }
+
+
+                    showCountdown();
+
+                });
+            </script>
+
+
+        </div>
+
+
+
+        <!--1. trial page for neurocare testbatterie containing a demonstration example to the task aufmerksamkeit-->
+        <div data-role="page" id="trialPageCross" data-dom-cache=true class="whitePage">
+
+            <div data-role="content">
+
+                <div class="cross">  </div>
+
+
+                <div class="rectangle"> </div>
+
+
+
+
+
+            </div>
+
+
+            <script type="text/javascript">
+
+                $(document).delegate('#trialPageCross', 'pageshow', function () {
+
+                    // reset set timeout var
+                    clearTimeout(switchToCrossPageTimer);
+
+                    // show cross page for 3 seconds than switch to circle page
+                    function showJustForWhile() {
+
+
+                        switchToCirclePageTimer = setTimeout(function () {
+
+                            $.mobile.changePage('#trialPageCircle', {transition: "none"});
+                        }, 3000);
+
+                    }
+
+
+                    showJustForWhile();
+
+                });
+            </script>
+
+
+        </div> 
+
+
+
+        <!--1. trial page for neurocare testbatterie containing a demonstration example to the task aufmerksamkeit-->
+        <div data-role="page" id="trialPageCircle" data-dom-cache=true class="whitePage">
+
+            <div data-role="content">
+
+                <div class="kreis">  </div>
+
+
+                <div class="rectangle" data-type="reactionButtonTrial"> </div>
+
+
+
+
+
+            </div>
+
+
+            <script type="text/javascript">
+
+                $(document).delegate('#trialPageCircle', 'pageshow', function () {
+
+                    // reset set timeout var
+                    clearTimeout(switchToCirclePageTimer);
+
+                    // increment tha number of shown trials
+                    trialsShown++;
+                    // reset flag
+                    reactionExecuted = false;
+                    // wait 4 seconds to execute this
+                    switchToCrossPageTimer = setTimeout(function () {
+                        // if reaction button was not clicked
+                        if (!reactionExecuted) {
+                            // increment counter of failed reactions
+                            failedReactions++;
+                            // if more trials will be shown
+                            if (trialsShown < trialsToAchieve) {
+
+                                $.mobile.changePage('#trialPageCross', {transition: "none"});
+                            }
+                            // if max. trials number was reached
+                            else {
+
+                                // if user didn't successively reacted twice 
+                                if (failedReactions >= 2) {
+                                    $.mobile.changePage('#hintPageTrial', {transition: "flip"});
+                                }
+
+                                else {
+
+                                    $.mobile.changePage('#startTaskAlertness', {transition: "none"});
+                                }
+                            }
+                        }
+                    }, 4000);
+
+
+                });
+            </script>
+
+
+        </div> 
+
+
+        <!--start page for the task alertness-->
+        <div data-role="page" id="startTaskAlertness" data-dom-cache=true class="introPage">
+
+            <div data-role="content">
+
+                <image src="css\images\icons\tipp.png" class="infoIcon"/>
+
+                <center>
+                    <p class="introTextTop">
+                        Beginnen Sie nun mit der Aufgabe
+                    </p>
+
+                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showCountDown();"/>
+                </center>
+
+
+            </div>
+            <script type="text/javascript">
+
+                $(document).delegate('#startTaskAlertness', 'pageshow', function () {
+
+                    // reset set timeout var
+                    clearTimeout(switchToCrossPageTimer);
+
+                });
+            </script>
+
+        </div>
+
+        <!--hint page: user should retry to solve the trial-->
+        <div data-role="page" id="hintPageTrial" data-dom-cache=true class="introPage">
+
+            <div data-role="content">
+
+                <image src="css\images\icons\tipp.png" class="infoIcon"/>
+
+                <center>
+                    <p class="introTextTop">
+                        Versuchen Sie bitte die Reaktionstaste zu drücken, sobald Sie den blauen Punkt auf dem Bildschirm sehen
+                    </p>
+
+                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showCountDown();"/>
+                </center>
+
+
+            </div>
+
+            <script type="text/javascript">
+
+                $(document).delegate('#hintPageTrial', 'pageshow', function () {
+
+                    // reset set timeout var
+                    clearTimeout(switchToCrossPageTimer);
+
+                });
+            </script>
+
+        </div>
+
+
+        <!--1. trial page for neurocare testbatterie containing a demonstration example to the task aufmerksamkeit-->
+        <div data-role="page" id="pageCross" data-dom-cache=true class="whitePage">
+
+            <div data-role="content">
+
+                <div class="cross">  </div>
+
+
+                <div class="rectangle"> </div>
+
+
+
+
+
+            </div>
+
+
+            <script type="text/javascript">
+
+                $(document).delegate('#trialPageCross', 'pageshow', function () {
+
+
+                });
+            </script>
+
+
+        </div> 
+
+    </body>
+
+
+
+</html>
