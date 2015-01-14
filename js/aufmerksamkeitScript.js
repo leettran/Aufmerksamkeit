@@ -3,17 +3,27 @@
  */
 
 
+// alertness variables
 var trialsToAchieve = 5;
 var trialsShown = 0;
+var executionsToAchieve = 50;
+var executionsShown = 0;
 var reactionExecuted = false;
 var trialAlreadyShown = false;
 var failedReactions = 0;
+var crossShowDurations = new Array(3000,3100,2900,2800,2900,2700,2900,3000,2900,2800,2900,2700,2900,2800,3000,2900,2800,3100,2900,3000,2900,2700,2900,2800,3000,2900,2800,3000,2900,3100,2900,2800,2700,2900,3000,2900,3000,2800,2900,3100,2900,2800,2900,3000,2900,2700,2800,3000,3100,2900);
+var crossShowDurationsPointer = 0;
 
+// time value variables
+var switchToCirclePageTimerTrial;
+var switchToCrossPageTimerTrial;
 var switchToCirclePageTimer;
 var switchToCrossPageTimer;
 
 
 
+
+// slides to demo page start
 function goToDemo() {
 
     try
@@ -28,6 +38,7 @@ function goToDemo() {
 }
 
 
+// shows countdown page
 function showCountDown() {
 
     try
@@ -55,7 +66,7 @@ function showCountDown() {
 }
 
 
-
+// shows next trial page (cross page)
 function showNextTrial() {
 
     try
@@ -81,6 +92,35 @@ function showNextTrial() {
 
                 $.mobile.changePage('#startTaskAlertness', {transition: "flip"});
             }
+        }
+
+    }
+
+    catch (error) {
+
+        console.log("An error has been occured! " + error);
+    }
+}
+
+
+// shows next execution page (cross page)
+function showNext() {
+
+    try
+    {
+        // if more executions should be shown
+        if (executionsShown < executionsToAchieve) {
+
+            $.mobile.changePage('#pageCross', {transition: "none"});
+            // set flag
+            reactionExecuted = true;
+            
+        }
+        // if max. number of executions is reached
+        else {
+           
+                $.mobile.changePage('#selectiveAttentionStart', {transition: "flip"});
+           
         }
 
     }

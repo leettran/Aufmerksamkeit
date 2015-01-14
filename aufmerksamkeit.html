@@ -56,6 +56,10 @@ and open the template in the editor.
                         showNextTrial();
                     });
 
+                    $("div[data-type*='reactionButtonExecution']").bind("tap", function () {
+                        showNext();
+                    });
+
 
                     showJustForWhile();
 
@@ -66,6 +70,9 @@ and open the template in the editor.
         </div> 
 
 
+        <!--subtask: Alertness-->
+        
+        
         <!--startpage for neurocare testbatterie with task: aufmerksamkeit task alertness-->
         <div data-role="page" id="alertnessStart" data-dom-cache=true class="startPage" >
 
@@ -191,7 +198,7 @@ and open the template in the editor.
                 <div class="rectangle"> </div>
 
 
-                <div class="speech" id="secondBubble" style="top: 40%;left: 60%;visibility: hidden;" >Jetzt müssen Sie drücken!</div>
+                <div class="speech" id="secondBubble" style="top: 37%;left: 57%;visibility: hidden;" >Jetzt müssen Sie drücken!</div>
 
 
             </div>
@@ -281,7 +288,7 @@ and open the template in the editor.
 
                 <div class="rectangle"> </div>
 
-                <div class="speech" id="thirdBubble" style="top: 40%;left: 60%;visibility: hidden;" >Jetzt müssen Sie drücken!</div>
+                <div class="speech" id="thirdBubble" style="top: 37%;left: 57%;visibility: hidden;" >Jetzt müssen Sie drücken!</div>
 
 
             </div>
@@ -436,13 +443,13 @@ and open the template in the editor.
                 $(document).delegate('#trialPageCross', 'pageshow', function () {
 
                     // reset set timeout var
-                    clearTimeout(switchToCrossPageTimer);
+                    clearTimeout(switchToCrossPageTimerTrial);
 
                     // show cross page for 3 seconds than switch to circle page
                     function showJustForWhile() {
 
 
-                        switchToCirclePageTimer = setTimeout(function () {
+                        switchToCirclePageTimerTrial = setTimeout(function () {
 
                             $.mobile.changePage('#trialPageCircle', {transition: "none"});
                         }, 3000);
@@ -482,14 +489,14 @@ and open the template in the editor.
                 $(document).delegate('#trialPageCircle', 'pageshow', function () {
 
                     // reset set timeout var
-                    clearTimeout(switchToCirclePageTimer);
+                    clearTimeout(switchToCirclePageTimerTrial);
 
                     // increment tha number of shown trials
                     trialsShown++;
                     // reset flag
                     reactionExecuted = false;
                     // wait 4 seconds to execute this
-                    switchToCrossPageTimer = setTimeout(function () {
+                    switchToCrossPageTimerTrial = setTimeout(function () {
                         // if reaction button was not clicked
                         if (!reactionExecuted) {
                             // increment counter of failed reactions
@@ -545,6 +552,7 @@ and open the template in the editor.
                 $(document).delegate('#startTaskAlertness', 'pageshow', function () {
 
                     // reset set timeout var
+                    clearTimeout(switchToCrossPageTimerTrial);
                     clearTimeout(switchToCrossPageTimer);
 
                 });
@@ -575,6 +583,7 @@ and open the template in the editor.
                 $(document).delegate('#hintPageTrial', 'pageshow', function () {
 
                     // reset set timeout var
+                    clearTimeout(switchToCrossPageTimerTrial);
                     clearTimeout(switchToCrossPageTimer);
 
                 });
@@ -583,7 +592,7 @@ and open the template in the editor.
         </div>
 
 
-        <!--1. trial page for neurocare testbatterie containing a demonstration example to the task aufmerksamkeit-->
+        <!--cross page for the execution of subtask alertness-->
         <div data-role="page" id="pageCross" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -602,7 +611,79 @@ and open the template in the editor.
 
             <script type="text/javascript">
 
-                $(document).delegate('#trialPageCross', 'pageshow', function () {
+                $(document).delegate('#pageCross', 'pageshow', function () {
+
+                    var timeout = crossShowDurations[crossShowDurationsPointer];
+                    crossShowDurationsPointer++;
+
+                    // reset set timeout var
+                    clearTimeout(switchToCrossPageTimer);
+
+                    // show cross page for 3 seconds than switch to circle page
+                    function showJustForWhile() {
+
+
+                        switchToCirclePageTimer = setTimeout(function () {
+
+                            $.mobile.changePage('#pageCircle', {transition: "none"});
+                        }, timeout);
+
+                    }
+
+
+                    showJustForWhile();
+                });
+            </script>
+
+
+        </div> 
+
+        <!--circle page for the execution of subtask alertness-->
+        <div data-role="page" id="pageCircle" data-dom-cache=true class="whitePage">
+
+            <div data-role="content">
+
+                <div class="kreis">  </div>
+
+
+                <div class="rectangle" data-type="reactionButtonExecution"> </div>
+
+
+
+
+
+            </div>
+
+
+            <script type="text/javascript">
+
+                $(document).delegate('#pageCircle', 'pageshow', function () {
+
+                    // reset set timeout var
+                    clearTimeout(switchToCirclePageTimer);
+
+                    // increment tha number of shown executions
+                    executionsShown++;
+                    // reset flag
+                    reactionExecuted = false;
+                    // wait 4 seconds to execute this
+                    switchToCrossPageTimer = setTimeout(function () {
+                        // if reaction button was not clicked
+                        if (!reactionExecuted) {
+
+                            // if more executions will be shown
+                            if (executionsShown < executionsToAchieve) {
+
+                                $.mobile.changePage('#pageCross', {transition: "none"});
+                            }
+                            // if max. executions number was reached
+                            else {
+                                // slide to next subtask
+                                $.mobile.changePage('#selectiveAttentionStart', {transition: "flip"});
+
+                            }
+                        }
+                    }, 4000);
 
 
                 });
@@ -610,6 +691,43 @@ and open the template in the editor.
 
 
         </div> 
+
+        
+        <!--subtask: Selektive Aufmerksamkeit-->
+
+        <!--startpage for neurocare testbatterie with task: aufmerksamkeit task alertness-->
+        <div data-role="page" id="selectiveAttentionStart" data-dom-cache=true class="startPage" >
+
+
+            <div data-role="content">
+
+                <div class="testname">Teilaufgabe<br>Selektive Aufmerksamkeit</div>
+
+
+
+            </div>
+
+            <!--script used to show start page for few seconds and the to switch to intro page-->
+            <script type="text/javascript">
+
+                $(document).delegate('#selectiveAttentionStart', 'pageshow', function () {
+
+                    function showJustForWhile() {
+                        setTimeout(function () {
+//                            $.mobile.changePage('#alertnessIntro', {transition: "flip"});
+                        }, 2000);
+
+                    }
+
+
+                    showJustForWhile();
+
+                });
+            </script>
+
+
+        </div>
+
 
     </body>
 
