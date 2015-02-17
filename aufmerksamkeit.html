@@ -68,7 +68,7 @@ and open the template in the editor.
                         showNextSubtask2();
                     });
 
-                    $("div[data-type='reactionButtonTrialSubtask2']").bind("tap", function () {
+                    $("div[data-type='reactionButtonTrialSubtask3']").bind("tap", function () {
                         showNextTrialSubtask3();
                     });
 
@@ -136,7 +136,8 @@ and open the template in the editor.
                         Gleich sehen Sie in der Mitte des Bildschirms ein schwarzes Fixierkreuz.
                         Richten Sie Ihren Blick auf das Kreuz. Immer wieder wird hier ein blauer Punkt erscheinen.</br>
                         Drücken Sie die Reaktionstaste unten im Bild sobald Sie den blauen Punkt sehen.
-                        Reagieren Sie so schnell wie möglich. Sie haben nur wenig Zeit für Ihre Reaktion.
+                        Reagieren Sie so schnell wie möglich. Sie haben nur wenig Zeit für Ihre Reaktion. </br></br>
+                        Sehen Sie zunächst ein Beispiel zur Demonstration.
 
                     </p>
                 </center>
@@ -156,13 +157,15 @@ and open the template in the editor.
 
             <div data-role="content">
 
+                <div id="firstBubble" class="demoHintText" style="visibility: hidden;"> Richten Sie Ihren Blick auf das Fixierkreuz </div>
+
                 <div class="cross">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> </div>
 
 
-                <div class="speech" id="firstBubble" style="visibility: hidden;">Richten Sie Ihren Blick auf das Fixierkreuz</div>
+                <!--                <div class="speech" id="firstBubble" style="visibility: hidden;">Richten Sie Ihren Blick auf das Fixierkreuz</div>-->
 
 
             </div>
@@ -179,16 +182,19 @@ and open the template in the editor.
                             $("#firstBubble").css("visibility", "visible");
 
 
-                        }, 1000);
+                        }, 2000);
 
 
                         setTimeout(function () {
                             // hide bubble hint
                             $("#firstBubble").css("visibility", "hidden");
 
-                            $.mobile.changePage('#aufmerksamkeitDemo2', {transition: "none"});
+                            setTimeout(function () {
 
-                        }, 4000);
+                                $.mobile.changePage('#aufmerksamkeitDemo2', {transition: "none"});
+                            }, 2000);
+
+                        }, 5000);
 
                     }
 
@@ -208,13 +214,15 @@ and open the template in the editor.
 
             <div data-role="content">
 
+                <div id="secondBubble" class="demoHintText" style="visibility: hidden;"> Sobald Sie einen blauen Kreis sehen, tippen Sie auf das Reaktionsfeld </div>
+
                 <div class="kreis">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty" id="demoRectangle1"> <h1 class="reactionText"> Reaktion </h1> </div>
 
 
-                <div class="speech" id="secondBubble" style="top: 37%;left: 57%;visibility: hidden;" >Jetzt müssen Sie drücken!</div>
+                <!--<div class="speech" id="secondBubble" style="top: 37%;left: 57%;visibility: hidden;" >Jetzt müssen Sie drücken!</div>-->
 
 
             </div>
@@ -225,22 +233,31 @@ and open the template in the editor.
                 $(document).delegate('#aufmerksamkeitDemo2', 'pageshow', function () {
 
                     function showSpeechBubble() {
+
                         setTimeout(function () {
 
                             // show bubble hint
                             $("#secondBubble").css("visibility", "visible");
 
+                        }, 1500);
 
-                        }, 500);
+                        // blink reaction field
+                        setTimeout(function () {
+
+                            blink("demoRectangle1", 8);
+                        }, 4500);
 
 
                         setTimeout(function () {
+                            // reset bgd
+                            $('#demoRectangle1').css("background", "transparent");
+
                             // hide bubble hint
                             $("#secondBubble").css("visibility", "hidden");
 
                             $.mobile.changePage('#aufmerksamkeitDemo3', {transition: "none"});
 
-                        }, 4000);
+                        }, 8500);
 
                     }
 
@@ -262,7 +279,7 @@ and open the template in the editor.
                 <div class="cross">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> </div>
 
 
 
@@ -299,12 +316,14 @@ and open the template in the editor.
 
             <div data-role="content">
 
+                <div id="thirdBubble" class="demoHintText" style="visibility: hidden;"> Jetzt müssten Sie reagieren! </div>
+
                 <div class="kreis">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty" id="demoRectangle2"> <h1 class="reactionText"> Reaktion </h1> </div>
 
-                <div class="speech" id="thirdBubble" style="top: 37%;left: 57%;visibility: hidden;" >Jetzt müssen Sie drücken!</div>
+                <!--<div class="speech" id="thirdBubble" style="top: 37%;left: 57%;visibility: hidden;" >Jetzt müssen Sie drücken!</div>-->
 
 
             </div>
@@ -321,16 +340,28 @@ and open the template in the editor.
                             // show bubble hint
                             $("#thirdBubble").css("visibility", "visible");
 
-                        }, 500);
+                        }, 1500);
+
+
+                        // blink reaction field
+                        setTimeout(function () {
+
+                            blink("demoRectangle2", 4);
+                        }, 3500);
 
 
                         setTimeout(function () {
+                            // reset bgd
+                            $('#demoRectangle2').css("background", "transparent");
 
                             // hide bubble hint
                             $("#thirdBubble").css("visibility", "hidden");
-                            $.mobile.changePage('#bridgingPageAlertness', {transition: "flip"});
 
-                        }, 3000);
+                            setTimeout(function () {
+                                $.mobile.changePage('#bridgingPageAlertness', {transition: "flip"});
+                            }, 1000);
+
+                        }, 6500);
                     }
 
 
@@ -356,7 +387,32 @@ and open the template in the editor.
                         Machen Sie zunächst selbständig einen Probedurchgang
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showCountDownSubtask1();"/>
+                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder', 'null');"/>
+                </center>
+
+
+            </div>
+
+
+
+
+        </div> 
+
+
+        <!--bridging page for the subtask alertness-->
+        <div data-role="page" id="hintPageReminder" data-dom-cache=true class="introPage">
+
+            <div data-role="content">
+
+                <image src="css\images\icons\tipp.png" class="infoIcon"/>
+
+                <center>
+                    <p class="introTextTop">
+                        Richten Sie Ihren Blick auf das Fixierkreuz.</br>
+                        Tippen Sie die Reaktionstaste so schnell wie möglich, sobald Sie einen blauen Kreis sehen
+                    </p>
+
+                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonMiddle" onclick="showCountDownSubtask1();"/>
                 </center>
 
 
@@ -445,7 +501,7 @@ and open the template in the editor.
                 <div class="cross">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> </div>
 
 
 
@@ -491,7 +547,7 @@ and open the template in the editor.
                 <div class="kreis">  </div>
 
 
-                <div class="rectangle" data-type="reactionButtonTrial"> </div>
+                <div class="rectangle" data-type="reactionButtonTrial"> <h1 class="reactionText">Reaktion </h1> </div>
 
 
 
@@ -526,11 +582,16 @@ and open the template in the editor.
                             else {
 
                                 // if user didn't successively reacted twice 
-                                if (failedReactions >= 2) {
+                                if (failedReactions > 2 && trialExecutionsCount < 3) {
+                                    // increment trials count
+                                    trialExecutionsCount++;
+                                    // go to hint page
                                     $.mobile.changePage('#hintPageTrial', {transition: "flip"});
                                 }
 
                                 else {
+
+                                    trialAlreadyShownSubtask1 = true;
 
                                     $.mobile.changePage('#startTaskAlertness', {transition: "none"});
                                 }
@@ -558,7 +619,7 @@ and open the template in the editor.
                         Beginnen Sie nun mit der Aufgabe
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showCountDownSubtask1();"/>
+                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder', 'null');"/>
                 </center>
 
 
@@ -585,10 +646,10 @@ and open the template in the editor.
 
                 <center>
                     <p class="introTextTop">
-                        Versuchen Sie bitte die Reaktionstaste zu drücken, sobald Sie den blauen Punkt auf dem Bildschirm sehen
+                        versuchen Sie es bitte noch einmal. Tippen Sie die Reaktionstaste nach jedem blauen Kreis an
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showCountDownSubtask1();"/>
+                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder', 'null');"/>
                 </center>
 
 
@@ -616,7 +677,7 @@ and open the template in the editor.
                 <div class="cross">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> </div>
 
 
 
@@ -662,7 +723,7 @@ and open the template in the editor.
                 <div class="kreis">  </div>
 
 
-                <div class="rectangle" data-type="reactionButtonExecution"> </div>
+                <div class="rectangle" data-type="reactionButtonExecution"> <h1 class="reactionText"> Reaktion </h1> </div>
 
 
 
@@ -707,6 +768,9 @@ and open the template in the editor.
 
 
         </div> 
+
+
+
 
 
         <!--subtask: Selektive Aufmerksamkeit-->
@@ -758,7 +822,8 @@ and open the template in the editor.
 
                         Wie in der vorherigen Aufgabe sehen Sie nun wieder ein schwarzes Fixierungskreuz in der Bildschirmmitte.</br> 
                         Richten Sie Ihren Blick auf das Kreuz. Dort werden Kreise in vier verschiedenen Farben jeweils vor einem farbigen Hintergrund erscheinen.</br>
-                        Wann immer Sie einen gelben Kreis vor einem grünen Hintergrund sehen, drücken Sie die Reaktionstaste.          
+                        Wann immer Sie einen gelben Kreis vor einem grünen Hintergrund sehen, drücken Sie die Reaktionstaste. </br> </br>
+                        Sehen Sie zunächst ein Beispiel zur Demonstration
 
                     </p>
                 </center>
@@ -779,10 +844,13 @@ and open the template in the editor.
 
             <div data-role="content">
 
+                <div id="fourthBubble" class="demoHintText" style="visibility: hidden;"> Richten Sie Ihren Blick auf das Fixierkreuz. 
+                    Reagieren Sie nur bei einem gelben Kreis vor grünem Hintergrund </div>
+
                 <div class="cross">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> </div>
 
 
 
@@ -793,12 +861,27 @@ and open the template in the editor.
 
                 $(document).delegate('#selectiveAttentionDemo1', 'pageshow', function () {
 
+                    setTimeout(function () {
+
+                        // show bubble hint
+                        $("#fourthBubble").css("visibility", "visible");
+
+
+                    }, 500);
+
+                    setTimeout(function () {
+
+                        // hide bubble hint
+                        $("#fourthBubble").css("visibility", "hidden");
+
+
+                    }, 6500);
 
                     setTimeout(function () {
 
                         $.mobile.changePage('#selectiveAttentionDemo2', {transition: "none"});
 
-                    }, 3000);
+                    }, 8500);
 
 
                 });
@@ -813,14 +896,16 @@ and open the template in the editor.
 
             <div data-role="content">
 
+                <div id="fourthBubble2" class="demoHintText" style="visibility: hidden;"> Nicht reagieren! </div>
+
                 <div class="hostingRectangle" style="background: red;">
                     <div class="selectiveKreis" style="background: green;">  </div>
                 </div>
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> <h1 class="reactionText"> Reaktion </h1> </div>
 
 
-                <div class="speech" id="fourthBubble" style="top: 37%;left: 57%;visibility: hidden;" >Kein gelber Kreis </br> auf grünem Hintergrund. Nicht reagieren!</div>
+                <!--<div class="speech" id="fourthBubble" style="top: 37%;left: 57%;visibility: hidden;" >Kein gelber Kreis </br> auf grünem Hintergrund. Nicht reagieren!</div>-->
 
 
             </div>
@@ -834,19 +919,19 @@ and open the template in the editor.
                         setTimeout(function () {
 
                             // show bubble hint
-                            $("#fourthBubble").css("visibility", "visible");
+                            $("#fourthBubble2").css("visibility", "visible");
 
 
-                        }, 500);
+                        }, 1500);
 
 
                         setTimeout(function () {
                             // hide bubble hint
-                            $("#fourthBubble").css("visibility", "hidden");
+                            $("#fourthBubble2").css("visibility", "hidden");
 
                             $.mobile.changePage('#selectiveAttentionDemo3', {transition: "none"});
 
-                        }, 4000);
+                        }, 3000);
 
                     }
 
@@ -869,7 +954,7 @@ and open the template in the editor.
                 <div class="cross">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> </div>
 
 
 
@@ -887,7 +972,7 @@ and open the template in the editor.
 
                             $.mobile.changePage('#selectiveAttentionDemo4', {transition: "none"});
 
-                        }, 3000);
+                        }, 2000);
 
                     }
 
@@ -906,14 +991,16 @@ and open the template in the editor.
 
             <div data-role="content">
 
+                <div id="fifthBubble" class="demoHintText" style="visibility: hidden;"> Achtung: Gelber Kreis vor grünem Hintergrund. Jetzt reagieren! </div>
+
                 <div class="hostingRectangle" style="background: green;">
                     <div class="selectiveKreis" style="background: yellow;">  </div>
                 </div>
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty" id="demoRectangle3"> <h1 class="reactionText"> Reaktion </h1> </div>
 
 
-                <div class="speech" id="fifthBubble" style="top: 37%;left: 57%;visibility: hidden;" >Gelber Kreis </br> auf grünem Hintergrund. Reagieren!</div>
+                <!--<div class="speech" id="fifthBubble" style="top: 37%;left: 57%;visibility: hidden;" >Gelber Kreis </br> auf grünem Hintergrund. Reagieren!</div>-->
 
 
             </div>
@@ -932,14 +1019,24 @@ and open the template in the editor.
 
                         }, 500);
 
+                        // blink reaction field
+                        setTimeout(function () {
+
+                            blink("demoRectangle3", 6);
+                        }, 4500);
+
 
                         setTimeout(function () {
+                            // reset bgd
+                            $("#demoRectangle3").css("background", "transparent");
                             // hide bubble hint
                             $("#fifthBubble").css("visibility", "hidden");
 
-                            $.mobile.changePage('#selectiveAttentionDemo5', {transition: "none"});
+                            setTimeout(function () {
+                                $.mobile.changePage('#selectiveAttentionDemo5', {transition: "none"});
+                            }, 1000);
 
-                        }, 4000);
+                        }, 8000);
 
                     }
 
@@ -962,7 +1059,7 @@ and open the template in the editor.
                 <div class="cross">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> </div>
 
 
 
@@ -998,14 +1095,16 @@ and open the template in the editor.
 
             <div data-role="content">
 
+                <div id="sixthBubble" class="demoHintText" style="visibility: hidden;"> Nicht reagieren! </div>
+
                 <div class="hostingRectangle" style="background: green;">
                     <div class="selectiveKreis" style="background: blue">  </div>
                 </div>
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> <h1 class="reactionText"> Reaktion </h1> </div>
 
 
-                <div class="speech" id="sixthBubble" style="top: 37%;left: 57%;visibility: hidden;" >Kein gelber Kreis </br> auf grünem Hintergrund. Nicht reagieren!</div>
+                <!--<div class="speech" id="sixthBubble" style="top: 37%;left: 57%;visibility: hidden;" >Kein gelber Kreis </br> auf grünem Hintergrund. Nicht reagieren!</div>-->
 
 
             </div>
@@ -1058,11 +1157,38 @@ and open the template in the editor.
                         Machen Sie zunächst selbständig einen Probedurchgang
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showCountDownSubtask2();"/>
+                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder2', 'null');"/>
                 </center>
 
 
             </div>
+
+
+        </div> 
+
+
+
+
+        <!--bridging page for the subtask alertness-->
+        <div data-role="page" id="hintPageReminder2" data-dom-cache=true class="introPage">
+
+            <div data-role="content">
+
+                <image src="css\images\icons\tipp.png" class="infoIcon"/>
+
+                <center>
+                    <p class="introTextTop">
+                        Richten Sie Ihren Blick auf das Fixierkreuz.</br>
+                        Tippen sie die Reaktionstaste so schnell wie möglich, sobald Sie einen gelben Kreis vor grünem Hintergrund sehen
+                    </p>
+
+                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonMiddle" onclick="showCountDownSubtask2();"/>
+                </center>
+
+
+            </div>
+
+
 
 
         </div> 
@@ -1144,7 +1270,7 @@ and open the template in the editor.
                 <div class="cross">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> </div>
 
 
 
@@ -1192,7 +1318,7 @@ and open the template in the editor.
                 </div>
 
 
-                <div class="rectangle" data-type="reactionButtonTrialSubtask2"> </div>
+                <div class="rectangle" data-type="reactionButtonTrialSubtask2"> <h1 class="reactionText"> Reaktion </h1> </div>
 
 
 
@@ -1218,30 +1344,76 @@ and open the template in the editor.
                     // increment tha number of shown trials
                     trialsShownSubtask2++;
                     // reset flag
-//                    reactionExecutedSubtask2 = false;
+                    reactionExecutedSubtask2 = false;
                     // wait 4 seconds to execute this
                     switchToCrossPageTimerTrialSubtask2 = setTimeout(function () {
                         // if reaction button was not clicked
-//                        if (!reactionExecutedSubtask2) {
+                        if (!reactionExecutedSubtask2) {
+                            // increment counter of failed reactions
+                            failedReactions++;
+                            // if more trials will be shown
+                            if (trialsShownSubtask2 < trialsToAchieveSubtask2) {
 
-                        // if more trials will be shown
-                        if (trialsShownSubtask2 < trialsToAchieveSubtask2) {
+                                $.mobile.changePage('#trialPageCrossSubtask2', {transition: "none"});
+                            }
+                            // if max. trials number was reached
+                            else {
 
-                            $.mobile.changePage('#trialPageCrossSubtask2', {transition: "none"});
+                                // if user didn't successively reacted twice 
+                                if (failedReactions > 1 && trialExecutionsCount2 < 1) {
+                                    // increment trials count
+                                    trialExecutionsCount2++;
+                                    // go to hint page
+                                    $.mobile.changePage('#hintPageTrial2', {transition: "flip"});
+                                }
+
+                                else {
+
+                                    $.mobile.changePage('#startTaskSelectiveAttention', {transition: "none"});
+                                    trialAlreadyShownSubtask2 = true;
+
+                                }
+
+                            }
                         }
-                        // if max. trials number was reached
-                        else {
-
-                            $.mobile.changePage('#startTaskSelectiveAttention', {transition: "none"});
-
-                        }
-//                        }
                     }, 3000);
 
 
                 });
             </script>
 
+
+        </div>
+
+
+        <!--hint page: user should retry to solve the trial-->
+        <div data-role="page" id="hintPageTrial2" data-dom-cache=true class="introPage">
+
+            <div data-role="content">
+
+                <image src="css\images\icons\tipp.png" class="infoIcon"/>
+
+                <center>
+                    <p class="introTextTop">
+                        versuchen Sie es bitte noch einmal. Tippen Sie die Taste sobald Sie einen gelben Kreis vor grünem Hintergrund sehen
+                    </p>
+
+                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder2', 'null');"/>
+                </center>
+
+
+            </div>
+
+            <script type="text/javascript">
+
+                $(document).delegate('#hintPageTrial2', 'pageshow', function () {
+
+                    // reset set timeout var
+                    clearTimeout(switchToCrossPageTimerTrialSubtask2);
+                    clearTimeout(switchToCrossPageTimerSubtask2);
+
+                });
+            </script>
 
         </div>
 
@@ -1261,7 +1433,7 @@ and open the template in the editor.
                         Beginnen Sie nun mit der Aufgabe
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showCountDownSubtask2();"/>
+                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder2', 'null');"/>
                 </center>
 
 
@@ -1288,7 +1460,7 @@ and open the template in the editor.
                 <div class="cross">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> </div>
 
 
 
@@ -1337,7 +1509,7 @@ and open the template in the editor.
                 </div>
 
 
-                <div class="rectangle" data-type="reactionButtonSubtask2"> </div>
+                <div class="rectangle" data-type="reactionButtonSubtask2"> <h1 class="reactionText"> Reaktion </h1> </div>
 
 
 
@@ -1365,7 +1537,7 @@ and open the template in the editor.
                     // wait 4 seconds to execute this
                     switchToCrossPageTimerSubtask2 = setTimeout(function () {
                         // if reaction button was not clicked
-//                        if (!reactionExecutedSubtask2) {
+                        if (!reactionExecutedSubtask2) {
 
                         // if more executions will be shown
                         if (executionsShownSubtask2 < executionsToAchieveSubtask2) {
@@ -1378,7 +1550,7 @@ and open the template in the editor.
                             $.mobile.changePage('#separatedAttentionStart', {transition: "flip"});
 
                         }
-//                        }
+                        }
                     }, 3000);
 
 
@@ -1387,6 +1559,9 @@ and open the template in the editor.
 
 
         </div>
+
+
+
 
 
 
@@ -1441,7 +1616,8 @@ and open the template in the editor.
                         Wie in der vorherigen Aufgabe sehen Sie nun wieder ein schwarzes Fixierkreuz in der Bildschirmmitte.</br>
                         Richten Sie Ihren Blick auf das Kreuz. Dort werden verschiede Formen (Dreiecke, Quadrate, Kreise und Sterne)
                         in verschiedenen Farben (blau, rot, grün, gelb) erscheinen.</br>
-                        Wann immer Sie ein rotes Dreieck sehen, sollen Sie die Reaktionstaste drücken.     
+                        Wann immer Sie ein rotes Dreieck sehen, sollen Sie die Reaktionstaste drücken. </br> </br>
+                        Sehen Sie zunächst ein Beispiel zur Demonstration
 
                     </p>
                 </center>
@@ -1461,10 +1637,13 @@ and open the template in the editor.
 
             <div data-role="content">
 
+                <div id="seventhBubble" class="demoHintText" style="visibility: hidden;"> Richten Sie Ihren Blick auf das Fixierkreuz.
+                    Reagieren Sie nur bei einem roten Dreieck </div>
+
                 <div class="cross">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> </div>
 
 
 
@@ -1475,12 +1654,25 @@ and open the template in the editor.
 
                 $(document).delegate('#separatedAttentionDemo1', 'pageshow', function () {
 
-
                     setTimeout(function () {
 
-                        $.mobile.changePage('#separatedAttentionDemo2', {transition: "none"});
+                        // show bubble hint
+                        $("#seventhBubble").css("visibility", "visible");
 
-                    }, 3000);
+
+                    }, 500);
+
+                    setTimeout(function () {
+                        // hide bubble hint
+                        $("#seventhBubble").css("visibility", "hidden");
+
+                        setTimeout(function () {
+
+                            $.mobile.changePage('#separatedAttentionDemo2', {transition: "none"});
+
+                        }, 1000);
+
+                    }, 2500);
 
 
                 });
@@ -1495,14 +1687,15 @@ and open the template in the editor.
 
             <div data-role="content">
 
+                <div id="seventhBubble2" class="demoHintText" style="visibility: hidden;"> Nicht reagieren! </div>
 
                 <div class="kreis" style="background: green;">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> <h1 class="reactionText"> Reaktion </h1> </div>
 
 
-                <div class="speech" id="seventhBubble" style="top: 37%;left: 57%;visibility: hidden;" >Kein rotes Dreieck. </br> Nicht reagieren!</div>
+                <!--<div class="speech" id="seventhBubble" style="top: 37%;left: 57%;visibility: hidden;" >Kein rotes Dreieck. </br> Nicht reagieren!</div>-->
 
 
             </div>
@@ -1516,7 +1709,7 @@ and open the template in the editor.
                         setTimeout(function () {
 
                             // show bubble hint
-                            $("#seventhBubble").css("visibility", "visible");
+                            $("#seventhBubble2").css("visibility", "visible");
 
 
                         }, 500);
@@ -1524,11 +1717,11 @@ and open the template in the editor.
 
                         setTimeout(function () {
                             // hide bubble hint
-                            $("#seventhBubble").css("visibility", "hidden");
+                            $("#seventhBubble2").css("visibility", "hidden");
 
                             $.mobile.changePage('#separatedAttentionDemo3', {transition: "none"});
 
-                        }, 4000);
+                        }, 6500);
 
                     }
 
@@ -1551,7 +1744,7 @@ and open the template in the editor.
                 <div class="cross">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> </div>
 
 
 
@@ -1569,7 +1762,7 @@ and open the template in the editor.
 
                             $.mobile.changePage('#separatedAttentionDemo4', {transition: "none"});
 
-                        }, 3000);
+                        }, 2000);
 
                     }
 
@@ -1588,14 +1781,15 @@ and open the template in the editor.
 
             <div data-role="content">
 
+                <div id="eighthBubble" class="demoHintText" style="visibility: hidden;"> Nicht reagieren! </div>
 
                 <div class="star">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> <h1 class="reactionText"> Reaktion </h1> </div>
 
 
-                <div class="speech" id="eighthBubble" style="top: 37%;left: 57%;visibility: hidden;" >Kein rotes Dreieck. </br> Nicht reagieren!</div>
+                <!--<div class="speech" id="eighthBubble" style="top: 37%;left: 57%;visibility: hidden;" >Kein rotes Dreieck. </br> Nicht reagieren!</div>-->
 
 
             </div>
@@ -1612,7 +1806,7 @@ and open the template in the editor.
                             $("#eighthBubble").css("visibility", "visible");
 
 
-                        }, 500);
+                        }, 1500);
 
 
                         setTimeout(function () {
@@ -1621,7 +1815,7 @@ and open the template in the editor.
 
                             $.mobile.changePage('#separatedAttentionDemo5', {transition: "none"});
 
-                        }, 4000);
+                        }, 4500);
 
                     }
 
@@ -1644,7 +1838,7 @@ and open the template in the editor.
                 <div class="cross">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> </div>
 
 
 
@@ -1662,7 +1856,7 @@ and open the template in the editor.
 
                             $.mobile.changePage('#separatedAttentionDemo6', {transition: "none"});
 
-                        }, 3000);
+                        }, 2000);
 
                     }
 
@@ -1681,14 +1875,15 @@ and open the template in the editor.
 
             <div data-role="content">
 
+                <div id="ninthBubble" class="demoHintText" style="visibility: hidden;"> Achtung: rotes Dreieck. Jetzt reagieren! </div>
 
                 <div class="triangle">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty" id="demoRectangle4"> <h1 class="reactionText"> Reaktion </h1> </div>
 
 
-                <div class="speech" id="ninthBubble" style="top: 37%;left: 57%;visibility: hidden;" >Hier: rotes Dreieck. </br> Reagieren!</div>
+                <!--<div class="speech" id="ninthBubble" style="top: 37%;left: 57%;visibility: hidden;" >Hier: rotes Dreieck. </br> Reagieren!</div>-->
 
 
             </div>
@@ -1707,14 +1902,24 @@ and open the template in the editor.
 
                         }, 500);
 
+                        // blink reaction field
+                        setTimeout(function () {
+
+                            blink("demoRectangle4", 6);
+                        }, 4500);
+
 
                         setTimeout(function () {
+                            // reset bgd
+                            $("#demoRectangle4").css("background", "transparent");
                             // hide bubble hint
                             $("#ninthBubble").css("visibility", "hidden");
 
-                            $.mobile.changePage('#bridgingPageSeparatedAttention', {transition: "none"});
-
-                        }, 4000);
+                            setTimeout(function () {
+                                $.mobile.changePage('#bridgingPageSeparatedAttention', {transition: "none"});
+                            }, 1000);
+                            
+                        }, 8000);
 
                     }
 
@@ -1741,11 +1946,36 @@ and open the template in the editor.
                         Machen Sie zunächst selbständig einen Probedurchgang
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showCountDownSubtask3();"/>
+                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder3', 'null');"/>
                 </center>
 
 
             </div>
+
+
+        </div> 
+        
+        
+        <!--bridging page for the subtask alertness-->
+        <div data-role="page" id="hintPageReminder3" data-dom-cache=true class="introPage">
+
+            <div data-role="content">
+
+                <image src="css\images\icons\tipp.png" class="infoIcon"/>
+
+                <center>
+                    <p class="introTextTop">
+                        Richten Sie ihren Blick auf das Fixierkreuz. </br>
+                        Tippen sie die Reaktionstaste so schnell wie möglich, sobald Sie ein rotes Dreieck sehen
+                    </p>
+
+                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonMiddle" onclick="showCountDownSubtask3();"/>
+                </center>
+
+
+            </div>
+
+
 
 
         </div> 
@@ -1817,6 +2047,38 @@ and open the template in the editor.
 
 
         </div>
+        
+        
+        <!--hint page: user should retry to solve the trial-->
+        <div data-role="page" id="hintPageTrial3" data-dom-cache=true class="introPage">
+
+            <div data-role="content">
+
+                <image src="css\images\icons\tipp.png" class="infoIcon"/>
+
+                <center>
+                    <p class="introTextTop">
+                        versuchen Sie es bitte noch einmal. Tippen Sie die Reaktionstaste sobald Sie ein rotes Dreieck sehen
+                    </p>
+
+                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder3', 'null');"/>
+                </center>
+
+
+            </div>
+
+            <script type="text/javascript">
+
+                $(document).delegate('#hintPageTrial3', 'pageshow', function () {
+
+                    // reset set timeout var
+                    clearTimeout(switchToCrossPageTimerTrialSubtask3);
+                    clearTimeout(switchToCrossPageTimerSubtask3);
+
+                });
+            </script>
+
+        </div>
 
 
         <!--1. trial page for neurocare testbatterie containing a demonstration example to the task geteilte aufmerksamkeit-->
@@ -1827,7 +2089,7 @@ and open the template in the editor.
                 <div class="cross">  </div>
 
 
-                <div class="rectangle">  </div>
+                <div class="rectangleEmpty">  </div>
 
 
 
@@ -1881,11 +2143,11 @@ and open the template in the editor.
             <div data-role="content" id="shapePageContentTrial">
 
 
-                <div id="shapeIdTrial">  </div>
+                <div id="shapeIdTrial">   </div>
 
 
 
-                <div class="rectangle" data-type="reactionButtonTrialSubtask3"> </div>
+                <div class="rectangle" data-type="reactionButtonTrialSubtask3"> <h1 class="reactionText"> Reaktion </h1> </div>
 
 
 
@@ -1938,8 +2200,9 @@ and open the template in the editor.
                     // wait 4 seconds to execute this
                     switchToCrossPageTimerTrialSubtask3 = setTimeout(function () {
                         // if reaction button was not clicked
-//                        if (!reactionExecutedSubtask2) {
-
+                        if (!reactionExecutedSubtask2) {
+                            // increment counter of failed reactions
+                            failedReactions++;
                         // if more trials will be shown
                         if (trialsShownSubtask3 < trialsToAchieveSubtask3) {
 
@@ -1947,11 +2210,27 @@ and open the template in the editor.
                         }
                         // if max. trials number was reached
                         else {
+                            
+                            // if user didn't successively reacted twice 
+                                if (failedReactions > 1 && trialExecutionsCount3 < 1) {
+                                    // increment trials count
+                                    trialExecutionsCount3++;
+                                    // reset pointers
+                                    shapeTypesPointerTrial = 0;
+                                    shapeColorsPointerTrial = 0;
+                                    
+                                    // go to hint page
+                                    $.mobile.changePage('#hintPageTrial3', {transition: "flip"});
+                                }
+                                
+                                else {
 
                             $.mobile.changePage('#startTaskSeparatedAttention', {transition: "none"});
+                            trialAlreadyShownSubtask3 = true;
 
+                                }
                         }
-//                        }
+                        }
                     }, 3000);
 
 
@@ -1974,7 +2253,7 @@ and open the template in the editor.
                         Beginnen Sie nun mit der Aufgabe
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showCountDownSubtask3();"/>
+                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder3', 'null');"/>
                 </center>
 
 
@@ -2001,7 +2280,7 @@ and open the template in the editor.
                 <div class="cross">  </div>
 
 
-                <div class="rectangle"> </div>
+                <div class="rectangleEmpty"> </div>
 
 
 
@@ -2019,7 +2298,7 @@ and open the template in the editor.
 
                     // reset set timeout var
                     clearTimeout(switchToCrossPageTimerSubtask3);
-                    
+
                     // remove the old shape from DOM
                     if (shapeTypesPointer > 0) {
 
@@ -2059,7 +2338,7 @@ and open the template in the editor.
 
 
 
-                <div class="rectangle" data-type="reactionButtonSubtask3"> </div>
+                <div class="rectangle" data-type="reactionButtonSubtask3"> <h1 class="reactionText"> Reaktion </h1> </div>
 
 
 
@@ -2072,16 +2351,16 @@ and open the template in the editor.
 
                     // reset set timeout var
                     clearTimeout(switchToCirclePageTimerSubtask3);
-                    
-                     // check if shape element doesn't exists
+
+                    // check if shape element doesn't exists
                     if (!$("#shapeId").length) {
                         $("#shapePageContent").append("<div id='shapeId'> </div>");
                     }
-                    
+
 
                     // adjust form of the shape
                     $("#shapeId").addClass(shapeTypes[shapeTypesPointer]);
-                    
+
                     // adjust backg. color of the shape according to its type
                     if (shapeTypes[shapeTypesPointer] === "triangle") {
 
@@ -2099,8 +2378,8 @@ and open the template in the editor.
                         $("#shapeId").css('background', shapeColors[shapeColorsPointer]);
 
                     }
-                    
-                    
+
+
                     // increment pointers
                     shapeTypesPointer++;
                     shapeColorsPointer++;
@@ -2112,7 +2391,7 @@ and open the template in the editor.
                     // wait 4 seconds to execute this
                     switchToCrossPageTimerSubtask3 = setTimeout(function () {
                         // if reaction button was not clicked
-//                        if (!reactionExecutedSubtask2) {
+                        if (!reactionExecutedSubtask3) {
 
                         // if more executions will be shown
                         if (executionsShownSubtask3 < executionsToAchieveSubtask3) {
@@ -2125,7 +2404,7 @@ and open the template in the editor.
                             $.mobile.changePage('#endPage', {transition: "flip"});
 
                         }
-//                        }
+                        }
                     }, 2500);
 
 
@@ -2155,6 +2434,33 @@ and open the template in the editor.
 
 
         </div> 
+
+
+
+        <!--only for trainer video! To be dropped!-->
+        <!--        <div data-role="page" id="firstPage" data-dom-cache=true class="firstPage" >
+        
+                    <div data-role="content">
+        
+        
+        
+        
+                        <h2 style="color: #4BB24B;text-shadow: none; text-align: center; font-size: 50px; font-weight: bold;">Herzlich willkommen </br> bei der Neurocare Testbatterie!</h2>
+        
+                        <p style="line-height: 40px;font-size: 25px;font-weight: bold;text-decoration: none; text-shadow: none;position: absolute; top: 40%;left: 4%;right: 40%;"> Die sogenannte „Testbatterie“ ist eine Sammlung von einzelnen Aufgaben.
+                            Auf spielerische Weise wird damit Ihre aktuelle geistige Leistungsfähigkeit überprüft,
+                            z.B. in den Bereichen Gedächtnis, Aufmerksamkeit oder räumliche Wahrnehmung. </br> 
+                            Bevor es losgehen kann, möchten wir Sie noch auf einige wichtige Dinge aufmerksam machen. </br> 
+                            Drücken Sie auf "Weiter", um mehr zu erfahren.
+                        </p>
+        
+        
+                        <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTest" />
+        
+                    </div>
+        
+        
+                </div> -->
 
 
     </body>

@@ -13,8 +13,8 @@
     
     .square {
         position: absolute;
-        top: 35%;
-        left: 45%;
+        top: 33%;
+        left: 43.5%;
         width: 130px;
         height: 130px;
 /*        background: red; */
@@ -24,7 +24,7 @@
     .triangle {
         position: absolute;
         top: 25%;
-        left : 42%;
+        left : 40%;
         width: 0;
         height: 0; 
         border-left: 100px solid transparent;
@@ -35,8 +35,8 @@
     .star {
         margin: 50px 0;
         position: absolute;
-        top: 32%;
-        left: 42%;
+        top: 30%;
+        left: 40%;
         display: block; 
         color: red; 
         width: 0px;
@@ -182,17 +182,44 @@
         border-right: 20px solid #4BB24B;
         border-bottom: 10px solid transparent;
     }
-
-    .rectangle { 
+    
+    
+    .rectangleEmpty { 
         width: 500px; 
         height: 150px;
-        content: "Reaktion";
-        background: white; 
+        background: transparent; 
         border: 7px black solid;
         position: absolute;
         bottom: 5%;
         left: 50%;
         margin-left: -250px;
+    }
+
+    .rectangle { 
+        width: 500px; 
+        height: 150px;
+        background: transparent; 
+        border: 7px black solid;
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        margin-left: -250px;
+    }
+    
+    
+     .rectangle:active, .rectangle:focus, .rectangle.active{
+       
+        background: red;
+        
+    }
+    
+    .reactionText{
+        text-align: center;
+        font-weight: bold;
+        text-decoration: none;
+        text-shadow: none;
+        font-size: 55px;
+        
     }
 
 
@@ -203,7 +230,7 @@
         /*background: red;*/ 
         border: 2px black solid;
         position: absolute;
-        top: 20%;
+        top: 21%;
         left: 50%;
         margin-left: -150px;
     }
@@ -224,6 +251,19 @@
         vertical-align: middle;
         text-shadow: none;
 
+    }
+    
+    .demoHintText{
+       
+        position: absolute;
+        top: 8%;
+        left: 10%;
+        right: 10%;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: none;
+        font-size: 35px;
+        font-weight: bold;
     }
 
 
@@ -262,8 +302,8 @@
     .kreis{
         background-color: blue;
         position: absolute;
-        top: 35%;
-        left: 45%;
+        top: 33.5%;
+        left: 43.5%;
         width: 130px;
         height: 130px;
         border: 2px solid black;
@@ -386,6 +426,16 @@
         height: auto;
         min-height:100%;
     }
+    
+    .firstPage{
+        background-image: url('images/bg/bg-tagestipp.png');
+        background-color: transparent;
+        background-size: 100%;
+        width: 100%;
+        height: 100%;
+        height: auto;
+        min-height:100%;
+    }
 
     .taskEndText{
         font-size: 52px;
@@ -460,6 +510,20 @@
         top: 20%;
         left: 5%;
         right: 5%;
+    }
+    
+    
+     .defaultButtonTest{
+        
+        background-size: 100%;
+        background-repeat:no-repeat;       
+        height: 88px;
+        width: 245px;
+        position: absolute;
+        bottom: 2%;
+        right: 40%;
+        font-size: x-large;
+        text-shadow: none;
     }
 
     .defaultButton{
