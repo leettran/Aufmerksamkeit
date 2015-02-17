@@ -53,6 +53,8 @@ var hostingRectangleColorsTrial = new Array("blue", "green", "green", "red", "gr
 var selectiveKreisColorsTrial = new Array("red", "blue", "yellow", "yellow", "yellow", "red");
 var hostingRectangleColorsPointerTrial = 0;
 var selectiveKreisColorsPointerTrial = 0;
+var targetStimulationsCount = 0;
+var targetStimulationsToAchieve = 2;
 
 // contains a 73 color strings
 var hostingRectangleColors = new Array("yellow", "blue", "green", "red", "green", "green", "yellow", "green", "blue", "green", "red", "green", "yellow", "green", "blue", "red", "green", "green", "red", "blue", "green", "yellow", "green", "green", "red", "green", "green", "blue", "green", "yellow", "green", "yellow", "green", "red", "green", "blue", "yellow", "green", "green", "green", "blue", "blue", "green", "green", "yellow", "red", "green", "red", "green", "green", "yellow", "blue", "green", "yellow", "green", "red", "green", "blue", "green", "red", "green", "green", "yellow", "green", "blue", "red", "green", "green", "blue", "green", "yellow", "red", "green");
@@ -64,6 +66,8 @@ var shapeTypesTrial = new Array("kreis", "square", "triangle", "star", "triangle
 var shapeColorsTrial = new Array("green", "yellow", "red", "blue", "red", "green");
 var shapeTypesPointerTrial = 0;
 var shapeColorsPointerTrial = 0;
+var targetStimulationsCount2 = 0;
+var targetStimulationsToAchieve2 = 1;
 
 var shapeTypes = new Array("square", "triangle", "kreis", "triangle", "triangle", "square", "triangle", "triangle", "star", "triangle", "star", "triangle", "triangle", "square", "triangle", "square", "kreis", "triangle", "kreis", "triangle", "star", "triangle", "square", "kreis", "triangle", "kreis", "triangle", "square", "triangle", "kreis", "square", "triangle", "triangle", "kreis", "triangle", "triangle", "star", "star", "star", "triangle", "triangle", "star", "triangle", "star", "triangle", "kreis", "triangle", "triangle", "square", "triangle", "kreis", "triangle", "triangle", "square", "star", "triangle", "kreis", "triangle", "star", "triangle", "square", "triangle");
 var shapeColors = new Array("blue", "red", "yellow", "red", "yellow", "red", "green", "red", "green", "red", "red", "green", "blue", "red", "red", "yelllow", "green", "red", "red", "red", "blue", "red", "yellow", "red", "red", "green", "red", "red", "blue", "red", "green", "yellow", "red", "blue", "red", "green", "yellow", "red", "blue", "red", "blue", "red", "red", "yelllow", "red", "red", "yellow", "green", "blue", "red", "blue", "red", "yellow", "red", "green", "red", "yellow", "red", "red", "blue", "green", "red");
@@ -262,6 +266,9 @@ function showNextTrial() {
 
 
         setTimeout(function () {
+            
+            
+            
             // if more trials should be shown
             if (trialsShownSubtask1 < trialsToAchieve) {
 
@@ -274,7 +281,7 @@ function showNextTrial() {
             // if max. number of trials is reached
             else {
                 // if user didn't successively reacted twice 
-                if (failedReactions > 2 && trialExecutionsCount < 3) {
+                if (failedReactions > 1 && trialExecutionsCount < 3) {
                     // increment counter
                     trialExecutionsCount++;
                     // go to hint page
@@ -289,7 +296,7 @@ function showNextTrial() {
                 }
             }
 
-        }, 300);
+        }, 100);
 
     }
 
@@ -307,6 +314,14 @@ function showNextTrialSubtask2() {
     try
     {
         setTimeout(function () {
+            
+            // check if it was a target stimulus
+            var bgdColor = $("#hostingRectangleIdTrial").css('background-color');
+            var fgdColor = $("#selectiveKreisIdTrial").css('background-color');
+            // if yellow circle on green rectangle
+            if(bgdColor === "rgb(0, 128, 0)" && fgdColor === "rgb(255, 255, 0)")
+               targetStimulationsCount++; 
+           
             // if more trials should be shown
             if (trialsShownSubtask2 < trialsToAchieveSubtask2) {
 
@@ -319,9 +334,13 @@ function showNextTrialSubtask2() {
             else {
 
                 // if user didn't successively reacted twice 
-                if (failedReactions > 1 && trialExecutionsCount2 < 1) {
+                if ((failedReactions > 1 || targetStimulationsCount < targetStimulationsToAchieve) && trialExecutionsCount2 < 1) {
                     // increment counter
                     trialExecutionsCount2++;
+                    failedReactions = 0;
+                    // reset pointers
+                    hostingRectangleColorsPointerTrial = 0;
+                    selectiveKreisColorsPointerTrial = 0;
                     // go to hint page
                     $.mobile.changePage('#hintPageTrial2', {transition: "flip"});
                 }
@@ -335,7 +354,7 @@ function showNextTrialSubtask2() {
 
             }
 
-        }, 300);
+        }, 100);
 
     }
 
@@ -368,7 +387,7 @@ function showNextSubtask2() {
 
             }
 
-        }, 300);
+        }, 100);
 
     }
 
@@ -386,6 +405,13 @@ function showNextTrialSubtask3() {
     try
     {
         setTimeout(function () {
+            
+            // check for right stimulus
+            var shapeType = $("#shapeIdTrial").attr('class');
+            var shapeColor = $("#shapeIdTrial").css('border-bottom');
+            if(shapeType === "triangle" && shapeColor === "200px solid rgb(255, 0, 0)")
+                targetStimulationsCount2++;
+            
             // if more trials should be shown
             if (trialsShownSubtask3 < trialsToAchieveSubtask3) {
 
@@ -398,12 +424,15 @@ function showNextTrialSubtask3() {
             else {
 
                 // if user didn't successively reacted twice 
-                if (failedReactions > 1 && trialExecutionsCount3 < 1) {
+                if ((failedReactions > 1 || targetStimulationsCount2 < targetStimulationsToAchieve2) && trialExecutionsCount3 < 1) {
                     // increment counter
                     trialExecutionsCount3++;
                     // reset pointers
                     shapeTypesPointerTrial = 0;
                     shapeColorsPointerTrial = 0;
+                    failedReactions = 0;
+                    
+                    $("#shapeIdTrial").remove();
                     // go to hint page
                     $.mobile.changePage('#hintPageTrial3', {transition: "flip"});
                 }
@@ -417,7 +446,7 @@ function showNextTrialSubtask3() {
 
             }
 
-        }, 300);
+        }, 100);
 
     }
 
@@ -449,7 +478,7 @@ function showNextSubtask3() {
 
             }
 
-        }, 300);
+        }, 100);
     }
 
     catch (error) {
@@ -481,7 +510,7 @@ function showNext() {
 
             }
 
-        }, 300);
+        }, 100);
 
     }
 

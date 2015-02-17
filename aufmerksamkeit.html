@@ -1360,9 +1360,10 @@ and open the template in the editor.
                             else {
 
                                 // if user didn't successively reacted twice 
-                                if (failedReactions > 1 && trialExecutionsCount2 < 1) {
+                                if ((failedReactions > 1 || targetStimulationsCount < targetStimulationsToAchieve) && trialExecutionsCount2 < 1) {
                                     // increment trials count
                                     trialExecutionsCount2++;
+                                    failedReactions = 0;
                                     // go to hint page
                                     $.mobile.changePage('#hintPageTrial2', {transition: "flip"});
                                 }
@@ -2212,12 +2213,15 @@ and open the template in the editor.
                         else {
                             
                             // if user didn't successively reacted twice 
-                                if (failedReactions > 1 && trialExecutionsCount3 < 1) {
+                                if ((failedReactions > 1 || targetStimulationsCount2 < targetStimulationsToAchieve2) && trialExecutionsCount3 < 1) {
                                     // increment trials count
                                     trialExecutionsCount3++;
                                     // reset pointers
                                     shapeTypesPointerTrial = 0;
                                     shapeColorsPointerTrial = 0;
+                                    failedReactions = 0;
+                                    
+                                    $("#shapeIdTrial").remove();
                                     
                                     // go to hint page
                                     $.mobile.changePage('#hintPageTrial3', {transition: "flip"});
