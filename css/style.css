@@ -527,11 +527,47 @@
     }
 
     .defaultButton{
-        /*background-image:url('images/btns-bg/bt-weiter.png');*/
         background-size: 100%;
         background-repeat:no-repeat;       
         height: 88px;
         width: 245px;
+        position: absolute;
+        bottom: 1%;
+        right: 5%;
+        font-size: x-large;
+        text-shadow: none;
+    }
+    
+    
+    .demoButton{
+        background-size: 100%;
+        background-repeat:no-repeat;       
+        height: 88px;
+        width: 512px;
+        position: absolute;
+        bottom: 1%;
+        right: 5%;
+        font-size: x-large;
+        text-shadow: none;
+    }
+    
+    .retryButton{
+        background-size: 100%;
+        background-repeat:no-repeat;       
+        height: 88px;
+        width: 347px;
+        position: absolute;
+        bottom: 1%;
+        right: 5%;
+        font-size: x-large;
+        text-shadow: none;
+    }
+    
+    .startButton{
+        background-size: 100%;
+        background-repeat:no-repeat;       
+        height: 88px;
+        width: 512px;
         position: absolute;
         bottom: 1%;
         right: 5%;
@@ -607,11 +643,43 @@
 
     .defaultButton:active, .defaultButton:focus, .defaultButton.active{
         background-image:url('images/btns-bg/bt-weiter-hover.png');
-        /*        position:absolute; 
-                bottom: 1.8%;
-                right: 4.8%;*/
-        margin-bottom: 10px;
-        margin-right: -5px;
+        position:absolute; 
+        bottom: 0.7%;
+        right: 4.8%;
+        background-image: none;
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    
+     .demoButton:active, .demoButton:focus, .demoButton.active{
+        background-image:url('images/btns-bg/bt-probelauf-starten-hover.png');
+        position:absolute; 
+        bottom: 0.7%;
+        right: 4.8%;
+        background-image: none;
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    
+    
+    .retryButton:active, .retryButton:focus, .retryButton.active{
+        background-image:url('images/btns-bg/bt-wiederholen-hover.png');
+        position:absolute; 
+        bottom: 0.7%;
+        right: 4.8%;
+        background-image: none;
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    
+     .startButton:active, .startButton:focus, .startButton.active{
+        background-image:url('images/btns-bg/bt-starten-hover.png');
+        position:absolute; 
+        bottom: 0.7%;
+        right: 4.8%;
         background-image: none;
         outline: none;
         -webkit-box-shadow: none;

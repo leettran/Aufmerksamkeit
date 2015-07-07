@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+within this html page the Aufmerksamkeit Test of the NeuroCare Testbatterie will be presented in form of html5 pages.
 -->
 <html>
     <head>
@@ -26,7 +24,7 @@ and open the template in the editor.
 
     <body>
 
-        <!--startpage for neurocare testbatterie with task: aufmerksamkeit-->
+        <!--startpage-->
         <div data-role="page" id="aufmerksamkeitStart" data-dom-cache=true class="startPage" >
 
 
@@ -85,11 +83,13 @@ and open the template in the editor.
 
         </div> 
 
+        
+        
 
         <!--subtask: Alertness-->
 
 
-        <!--startpage for neurocare testbatterie with task: aufmerksamkeit task alertness-->
+        <!--startpage for subtask alertness-->
         <div data-role="page" id="alertnessStart" data-dom-cache=true class="startPage" >
 
 
@@ -122,7 +122,7 @@ and open the template in the editor.
 
         </div> 
 
-        <!--intro page for neurocare testbatterie containing a small introduction to the task alertness-->
+        <!--intro page for subtask alertness-->
         <div data-role="page" id="alertnessIntro" data-dom-cache=true class="introPage" >
 
             <div data-role="content">
@@ -133,8 +133,8 @@ and open the template in the editor.
                     <p class="introText">
 
                         Bei dieser Aufgabe geht es um schnelle Reaktionen.</br>
-                        Gleich sehen Sie in der Mitte des Bildschirms ein schwarzes Fixierkreuz.
-                        Richten Sie Ihren Blick auf das Kreuz. Immer wieder wird hier ein blauer Punkt erscheinen.</br>
+                        Gleich sehen Sie in der Mitte des Bildschirms ein schwarzes Fixierkreuz <img src="css\images\cross_small.png"/>.
+                        Richten Sie Ihren Blick auf das Kreuz. Immer wieder wird hier ein blauer Punkt <img src="css\images\blue_point_small.png"/> erscheinen.</br>
                         Drücken Sie die Reaktionstaste unten im Bild sobald Sie den blauen Punkt sehen.
                         Reagieren Sie so schnell wie möglich. Sie haben nur wenig Zeit für Ihre Reaktion. </br></br>
                         Sehen Sie zunächst ein Beispiel zur Demonstration.
@@ -143,8 +143,7 @@ and open the template in the editor.
                 </center>
 
 
-                <!--only for tests! later uncomment the first line!-->
-                <image src="css\images\btns-bg\bt-weiter.png" class="defaultButton" onclick="goToAlertnessDemo();"/>
+                  <image src="css\images\btns-bg\bt-probelauf-starten.png" class="demoButton" onclick="goToAlertnessDemo();"/>
 
             </div>
 
@@ -152,7 +151,7 @@ and open the template in the editor.
         </div>
 
 
-        <!--first demo page for neurocare testbatterie containing a demonstration example to the task aufmerksamkeit-->
+        <!--demo page 1 for subtask aufmerksamkeit-->
         <div data-role="page" id="aufmerksamkeitDemo1" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -209,7 +208,7 @@ and open the template in the editor.
 
 
 
-        <!--second demo page for neurocare testbatterie containing a demonstration example to the task aufmerksamkeit-->
+        <!-- demo page 2 for subtask aufmerksamkeit-->
         <div data-role="page" id="aufmerksamkeitDemo2" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -271,7 +270,7 @@ and open the template in the editor.
 
         </div> 
 
-        <!--third demo page for neurocare testbatterie containing a demonstration example to the task aufmerksamkeit-->
+        <!-- demo page 3 for subtask aufmerksamkeit-->
         <div data-role="page" id="aufmerksamkeitDemo3" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -311,7 +310,7 @@ and open the template in the editor.
         </div> 
 
 
-        <!--fourth demo page for neurocare testbatterie containing a demonstration example to the task aufmerksamkeit-->
+        <!-- demo page 4 for subtask aufmerksamkeit-->
         <div data-role="page" id="aufmerksamkeitDemo4" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -375,7 +374,7 @@ and open the template in the editor.
 
 
 
-        <!--bridging page for the subtask alertness-->
+        <!--bridging page for subtask alertness-->
         <div data-role="page" id="bridgingPageAlertness" data-dom-cache=true class="introPage">
 
             <div data-role="content">
@@ -387,7 +386,7 @@ and open the template in the editor.
                         Machen Sie zunächst selbständig einen Probedurchgang
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder', 'null');"/>
+                    <image src="css\images\btns-bg\bt-probelauf-starten.png" class="demoButton" onclick="showHintPage('hintPageReminder', 'null');"/>
                 </center>
 
 
@@ -399,12 +398,12 @@ and open the template in the editor.
         </div> 
 
 
-        <!--bridging page for the subtask alertness-->
+        <!--bridging page 2 for subtask alertness-->
         <div data-role="page" id="hintPageReminder" data-dom-cache=true class="introPage">
 
             <div data-role="content">
 
-                <image src="css\images\icons\tipp.png" class="infoIcon"/>
+                <image src="css\images\icons\info.png" class="infoIcon"/>
 
                 <center>
                     <p class="introTextTop">
@@ -424,7 +423,7 @@ and open the template in the editor.
         </div> 
 
 
-        <!--countdown page for the task aufmerksamkeit-->
+        <!--countdown page for  subtask aufmerksamkeit-->
         <div data-role="page" id="countdownPage" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -493,7 +492,7 @@ and open the template in the editor.
 
 
 
-        <!--1. trial page for neurocare testbatterie containing a demonstration example to the task aufmerksamkeit-->
+        <!--1. trial page for subtask alertness-->
         <div data-role="page" id="trialPageCross" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -539,7 +538,7 @@ and open the template in the editor.
 
 
 
-        <!--1. trial page for neurocare testbatterie containing a demonstration example to the task aufmerksamkeit-->
+        <!--2. trial page for subtask alertness-->
         <div data-role="page" id="trialPageCircle" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -619,7 +618,7 @@ and open the template in the editor.
                         Beginnen Sie nun mit der Aufgabe
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder', 'null');"/>
+                    <image src="css\images\btns-bg\bt-starten.png" class="startButton" onclick="showHintPage('hintPageReminder', 'null');"/>
                 </center>
 
 
@@ -642,14 +641,14 @@ and open the template in the editor.
 
             <div data-role="content">
 
-                <image src="css\images\icons\tipp.png" class="infoIcon"/>
+                <image src="css\images\icons\info.png" class="infoIcon"/>
 
                 <center>
                     <p class="introTextTop">
                         versuchen Sie es bitte noch einmal. Tippen Sie die Reaktionstaste nach jedem blauen Kreis an
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder', 'null');"/>
+                    <image src="css\images\btns-bg\bt-wiederholen.png" class="retryButton" onclick="showHintPage('hintPageReminder', 'null');"/>
                 </center>
 
 
@@ -772,10 +771,14 @@ and open the template in the editor.
 
 
 
+        
+        
 
         <!--subtask: Selektive Aufmerksamkeit-->
+        
+        
 
-        <!--startpage for neurocare testbatterie with task: aufmerksamkeit task alertness-->
+        <!--startpage for subtask selective attention-->
         <div data-role="page" id="selectiveAttentionStart" data-dom-cache=true class="startPage" >
 
 
@@ -810,7 +813,7 @@ and open the template in the editor.
         </div>
 
 
-        <!--intro page for neurocare testbatterie containing a small introduction to the task selektive aufmerksamkeit-->
+        <!--intro page for subtask selective attention-->
         <div data-role="page" id="selectiveAttentionIntro" data-dom-cache=true class="introPage" >
 
             <div data-role="content">
@@ -820,9 +823,9 @@ and open the template in the editor.
                 <center>
                     <p class="introText">
 
-                        Wie in der vorherigen Aufgabe sehen Sie nun wieder ein schwarzes Fixierungskreuz in der Bildschirmmitte.</br> 
+                        Wie in der vorherigen Aufgabe sehen Sie nun wieder ein schwarzes Fixierungskreuz <img src="css\images\cross_small.png"/> in der Bildschirmmitte.</br> 
                         Richten Sie Ihren Blick auf das Kreuz. Dort werden Kreise in vier verschiedenen Farben jeweils vor einem farbigen Hintergrund erscheinen.</br>
-                        Wann immer Sie einen gelben Kreis vor einem grünen Hintergrund sehen, drücken Sie die Reaktionstaste. </br> </br>
+                        Wann immer Sie einen gelben Kreis <img src="css\images\yellow_ellipse_small.png"/> vor einem grünen Hintergrund <img src="css\images\green_field_small.png"/> sehen, drücken Sie die Reaktionstaste. </br> </br>
                         Sehen Sie zunächst ein Beispiel zur Demonstration
 
                     </p>
@@ -830,7 +833,7 @@ and open the template in the editor.
 
 
                 <!--only for tests! later uncomment the first line!-->
-                <image src="css\images\btns-bg\bt-weiter.png" class="defaultButton" onclick="goToSelectiveAttentionDemo();"/>
+                <image src="css\images\btns-bg\bt-probelauf-starten.png" class="demoButton" onclick="goToSelectiveAttentionDemo();"/>
 
             </div>
 
@@ -839,7 +842,7 @@ and open the template in the editor.
 
 
 
-        <!--first demo page for neurocare testbatterie containing a demonstration example to the task selektive aufmerksamkeit-->
+        <!-- demo page 1 for subtask selective attention-->
         <div data-role="page" id="selectiveAttentionDemo1" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -891,7 +894,7 @@ and open the template in the editor.
         </div>
 
 
-        <!--second demo page for neurocare testbatterie containing a demonstration example to the task selektive aufmerksamkeit-->
+        <!-- demo page 2 for subtask selective attention-->
         <div data-role="page" id="selectiveAttentionDemo2" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -946,7 +949,7 @@ and open the template in the editor.
         </div> 
 
 
-        <!--third demo page for neurocare testbatterie containing a demonstration example to the task selektive aufmerksamkeit-->
+        <!-- demo page 3 for subtask selective attention-->
         <div data-role="page" id="selectiveAttentionDemo3" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -986,7 +989,7 @@ and open the template in the editor.
         </div> 
 
 
-        <!--fourth demo page for neurocare testbatterie containing a demonstration example to the task selektive aufmerksamkeit-->
+        <!-- demo page 4 for subtask selective attention-->
         <div data-role="page" id="selectiveAttentionDemo4" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -1051,7 +1054,7 @@ and open the template in the editor.
         </div>
 
 
-        <!--fifth demo page for neurocare testbatterie containing a demonstration example to the task selektive aufmerksamkeit-->
+        <!-- demo page 5 for subtask selective attention-->
         <div data-role="page" id="selectiveAttentionDemo5" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -1090,7 +1093,7 @@ and open the template in the editor.
 
         </div>
 
-        <!--sixth demo page for neurocare testbatterie containing a demonstration example to the task selektive aufmerksamkeit-->
+        <!-- demo page 6 for subtask selective attention-->
         <div data-role="page" id="selectiveAttentionDemo6" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -1145,7 +1148,7 @@ and open the template in the editor.
         </div>
 
 
-        <!--bridging page for the subtask alertness-->
+        <!--bridging page for subtask selective attention-->
         <div data-role="page" id="bridgingPageSelectiveAttention" data-dom-cache=true class="introPage">
 
             <div data-role="content">
@@ -1157,7 +1160,7 @@ and open the template in the editor.
                         Machen Sie zunächst selbständig einen Probedurchgang
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder2', 'null');"/>
+                    <image src="css\images\btns-bg\bt-probelauf-starten.png" class="demoButton" onclick="showHintPage('hintPageReminder2', 'null');"/>
                 </center>
 
 
@@ -1169,12 +1172,12 @@ and open the template in the editor.
 
 
 
-        <!--bridging page for the subtask alertness-->
+        <!--bridging page 2 for subtask selective attention-->
         <div data-role="page" id="hintPageReminder2" data-dom-cache=true class="introPage">
 
             <div data-role="content">
 
-                <image src="css\images\icons\tipp.png" class="infoIcon"/>
+                <image src="css\images\icons\info.png" class="infoIcon"/>
 
                 <center>
                     <p class="introTextTop">
@@ -1194,7 +1197,7 @@ and open the template in the editor.
         </div> 
 
 
-        <!--countdown page for the task selektive aufmerksamkeit-->
+        <!--countdown page for subtask selective attention-->
         <div data-role="page" id="countdownPage2" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -1262,7 +1265,7 @@ and open the template in the editor.
         </div>
 
 
-        <!--1. trial page for neurocare testbatterie containing a demonstration example to the task selektive aufmerksamkeit-->
+        <!--1. trial page for subtask selective attention-->
         <div data-role="page" id="trialPageCrossSubtask2" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -1308,7 +1311,7 @@ and open the template in the editor.
 
 
 
-        <!--2. trial page for neurocare testbatterie containing a demonstration example to the task selektive aufmerksamkeit-->
+        <!--2. trial page for subtask selective attention-->
         <div data-role="page" id="trialPageCircleSubtask2" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -1364,6 +1367,7 @@ and open the template in the editor.
                                     // increment trials count
                                     trialExecutionsCount2++;
                                     failedReactions = 0;
+                                    targetStimulationsCount = 0;
                                     // go to hint page
                                     $.mobile.changePage('#hintPageTrial2', {transition: "flip"});
                                 }
@@ -1392,14 +1396,14 @@ and open the template in the editor.
 
             <div data-role="content">
 
-                <image src="css\images\icons\tipp.png" class="infoIcon"/>
+                <image src="css\images\icons\info.png" class="infoIcon"/>
 
                 <center>
                     <p class="introTextTop">
                         versuchen Sie es bitte noch einmal. Tippen Sie die Taste sobald Sie einen gelben Kreis vor grünem Hintergrund sehen
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder2', 'null');"/>
+                    <image src="css\images\btns-bg\bt-wiederholen.png" class="retryButton" onclick="showHintPage('hintPageReminder2', 'null');"/>
                 </center>
 
 
@@ -1422,7 +1426,7 @@ and open the template in the editor.
 
 
 
-        <!--start page for the task selektive aufmerksamkeit-->
+        <!--start page for subtask selective attention-->
         <div data-role="page" id="startTaskSelectiveAttention" data-dom-cache=true class="introPage">
 
             <div data-role="content">
@@ -1434,7 +1438,7 @@ and open the template in the editor.
                         Beginnen Sie nun mit der Aufgabe
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder2', 'null');"/>
+                    <image src="css\images\btns-bg\bt-probelauf-starten.png" class="startButton" onclick="showHintPage('hintPageReminder2', 'null');"/>
                 </center>
 
 
@@ -1453,7 +1457,7 @@ and open the template in the editor.
         </div>
 
 
-        <!--cross page for the execution of subtask selektive aufmerkssamkeit-->
+        <!--cross page for subtask selective attention-->
         <div data-role="page" id="pageCrossSubtask2" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -1500,7 +1504,7 @@ and open the template in the editor.
         </div> 
 
 
-        <!--colored circle page for the execution of subtask selektive aufmerksamkeit-->
+        <!--colored circle page for subtask selective attention-->
         <div data-role="page" id="pageCircleSubtask2" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -1568,8 +1572,10 @@ and open the template in the editor.
 
 
         <!--subtask: geteilte Aufmerksamkeit-->
+        
+        
 
-        <!--startpage for neurocare testbatterie with task: aufmerksamkeit task alertness-->
+        <!--startpage for subtask separated attention-->
         <div data-role="page" id="separatedAttentionStart" data-dom-cache=true class="startPage" >
 
 
@@ -1604,7 +1610,7 @@ and open the template in the editor.
         </div>
 
 
-        <!--intro page for neurocare testbatterie containing a small introduction to the task aufgeteilte aufmerksamkeit-->
+        <!--intro page for subtask separated attention-->
         <div data-role="page" id="separatedAttentionIntro" data-dom-cache=true class="introPage" >
 
             <div data-role="content">
@@ -1614,10 +1620,10 @@ and open the template in the editor.
                 <center>
                     <p class="introText">
 
-                        Wie in der vorherigen Aufgabe sehen Sie nun wieder ein schwarzes Fixierkreuz in der Bildschirmmitte.</br>
+                        Wie in der vorherigen Aufgabe sehen Sie nun wieder ein schwarzes Fixierkreuz <img src="css\images\cross_small.png"/> in der Bildschirmmitte.</br>
                         Richten Sie Ihren Blick auf das Kreuz. Dort werden verschiede Formen (Dreiecke, Quadrate, Kreise und Sterne)
                         in verschiedenen Farben (blau, rot, grün, gelb) erscheinen.</br>
-                        Wann immer Sie ein rotes Dreieck sehen, sollen Sie die Reaktionstaste drücken. </br> </br>
+                        Wann immer Sie ein rotes Dreieck <img src="css\images\red_triangle_small.png"/> sehen, sollen Sie die Reaktionstaste drücken. </br> </br>
                         Sehen Sie zunächst ein Beispiel zur Demonstration
 
                     </p>
@@ -1625,7 +1631,7 @@ and open the template in the editor.
 
 
                 <!--only for tests! later uncomment the first line!-->
-                <image src="css\images\btns-bg\bt-weiter.png" class="defaultButton" onclick="goToSeparatedAttentionDemo();"/>
+                <image src="css\images\btns-bg\bt-probelauf-starten.png" class="demoButton" onclick="goToSeparatedAttentionDemo();"/>
 
             </div>
 
@@ -1633,7 +1639,7 @@ and open the template in the editor.
         </div>
 
 
-        <!--first demo page for neurocare testbatterie containing a demonstration example to the task geteilte aufmerksamkeit-->
+        <!-- demo page 1 for subtask separated attention-->
         <div data-role="page" id="separatedAttentionDemo1" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -1683,7 +1689,7 @@ and open the template in the editor.
         </div>
 
 
-        <!--second demo page for neurocare testbatterie containing a demonstration example to the task geteilte aufmerksamkeit-->
+        <!-- demo page 2 for subtask separated attention-->
         <div data-role="page" id="separatedAttentionDemo2" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -1737,7 +1743,7 @@ and open the template in the editor.
         </div> 
 
 
-        <!--third demo page for neurocare testbatterie containing a demonstration example to the task geteilte aufmerksamkeit-->
+        <!-- demo page 3 for subtask separated attention-->
         <div data-role="page" id="separatedAttentionDemo3" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -1777,7 +1783,7 @@ and open the template in the editor.
         </div> 
 
 
-        <!--fourth demo page for neurocare testbatterie containing a demonstration example to the task geteilte aufmerksamkeit-->
+        <!-- demo page 4 for subtask separated attention-->
         <div data-role="page" id="separatedAttentionDemo4" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -1831,7 +1837,7 @@ and open the template in the editor.
         </div> 
 
 
-        <!--fifth demo page for neurocare testbatterie containing a demonstration example to the task geteilte aufmerksamkeit-->
+        <!-- demo page 5 for subtask separated attention-->
         <div data-role="page" id="separatedAttentionDemo5" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -1871,7 +1877,7 @@ and open the template in the editor.
         </div> 
 
 
-        <!--sixth demo page for neurocare testbatterie containing a demonstration example to the task geteilte aufmerksamkeit-->
+        <!-- demo page 6 for subtask separated attention-->
         <div data-role="page" id="separatedAttentionDemo6" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -1935,7 +1941,7 @@ and open the template in the editor.
         </div> 
 
 
-        <!--bridging page for the subtask geteilte aufmerksamkeit-->
+        <!--bridging page for subtask separated attention-->
         <div data-role="page" id="bridgingPageSeparatedAttention" data-dom-cache=true class="introPage">
 
             <div data-role="content">
@@ -1947,7 +1953,7 @@ and open the template in the editor.
                         Machen Sie zunächst selbständig einen Probedurchgang
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder3', 'null');"/>
+                    <image src="css\images\btns-bg\bt-probelauf-starten.png" class="demoButton" onclick="showHintPage('hintPageReminder3', 'null');"/>
                 </center>
 
 
@@ -1957,12 +1963,12 @@ and open the template in the editor.
         </div> 
         
         
-        <!--bridging page for the subtask alertness-->
+        <!--bridging page 2 for subtask separated attention-->
         <div data-role="page" id="hintPageReminder3" data-dom-cache=true class="introPage">
 
             <div data-role="content">
 
-                <image src="css\images\icons\tipp.png" class="infoIcon"/>
+                <image src="css\images\icons\info.png" class="infoIcon"/>
 
                 <center>
                     <p class="introTextTop">
@@ -1982,7 +1988,7 @@ and open the template in the editor.
         </div> 
 
 
-        <!--countdown page for the task geteilte aufmerksamkeit-->
+        <!--countdown page for subtask separated attention-->
         <div data-role="page" id="countdownPage3" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -2055,14 +2061,14 @@ and open the template in the editor.
 
             <div data-role="content">
 
-                <image src="css\images\icons\tipp.png" class="infoIcon"/>
+                <image src="css\images\icons\info.png" class="infoIcon"/>
 
                 <center>
                     <p class="introTextTop">
                         versuchen Sie es bitte noch einmal. Tippen Sie die Reaktionstaste sobald Sie ein rotes Dreieck sehen
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder3', 'null');"/>
+                    <image src="css\images\btns-bg\bt-wiederholen.png" class="retryButton" onclick="showHintPage('hintPageReminder3', 'null');"/>
                 </center>
 
 
@@ -2082,7 +2088,7 @@ and open the template in the editor.
         </div>
 
 
-        <!--1. trial page for neurocare testbatterie containing a demonstration example to the task geteilte aufmerksamkeit-->
+        <!--1. trial page for subtask separated attention-->
         <div data-role="page" id="trialPageCrossSubtask3" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -2138,7 +2144,7 @@ and open the template in the editor.
         </div> 
 
 
-        <!--2. trial page for neurocare testbatterie containing a demonstration example to the task geteilte aufmerksamkeit-->
+        <!--2. trial page for subtask separated attention-->
         <div data-role="page" id="trialPageShapeSubtask3" data-dom-cache=true class="whitePage">
 
             <div data-role="content" id="shapePageContentTrial">
@@ -2220,6 +2226,7 @@ and open the template in the editor.
                                     shapeTypesPointerTrial = 0;
                                     shapeColorsPointerTrial = 0;
                                     failedReactions = 0;
+                                    targetStimulationsCount2 = 0;
                                     
                                     $("#shapeIdTrial").remove();
                                     
@@ -2245,7 +2252,7 @@ and open the template in the editor.
         </div>
 
 
-        <!--start page for the task geteilte aufmerksamkeit-->
+        <!--start page for subtask separated attention-->
         <div data-role="page" id="startTaskSeparatedAttention" data-dom-cache=true class="introPage">
 
             <div data-role="content">
@@ -2257,7 +2264,7 @@ and open the template in the editor.
                         Beginnen Sie nun mit der Aufgabe
                     </p>
 
-                    <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTop" onclick="showHintPage('hintPageReminder3', 'null');"/>
+                    <image src="css\images\btns-bg\bt-starten.png" class="startButton" onclick="showHintPage('hintPageReminder3', 'null');"/>
                 </center>
 
 
@@ -2276,7 +2283,7 @@ and open the template in the editor.
         </div>
 
 
-        <!--cross page for the execution of subtask geteilte aufmerkssamkeit-->
+        <!--cross page for subtask separated attention-->
         <div data-role="page" id="pageCrossSubtask3" data-dom-cache=true class="whitePage">
 
             <div data-role="content">
@@ -2332,7 +2339,7 @@ and open the template in the editor.
         </div> 
 
 
-        <!--colored shape page for the execution of subtask geteilte aufmerksamkeit-->
+        <!--colored shape page for the execution of subtask separated attention-->
         <div data-role="page" id="pageShapeSubtask3" data-dom-cache=true class="whitePage">
 
             <div data-role="content" id="shapePageContent">
@@ -2419,7 +2426,12 @@ and open the template in the editor.
         </div>
 
 
-        <!--end page of the task bildergeschichte-->
+        
+        
+        
+        
+        
+        <!--end page-->
         <div data-role="page" id="endPage" data-dom-cache=true class="introPage" >
 
             <div data-role="content">
@@ -2441,31 +2453,7 @@ and open the template in the editor.
 
 
 
-        <!--only for trainer video! To be dropped!-->
-        <!--        <div data-role="page" id="firstPage" data-dom-cache=true class="firstPage" >
-        
-                    <div data-role="content">
-        
-        
-        
-        
-                        <h2 style="color: #4BB24B;text-shadow: none; text-align: center; font-size: 50px; font-weight: bold;">Herzlich willkommen </br> bei der Neurocare Testbatterie!</h2>
-        
-                        <p style="line-height: 40px;font-size: 25px;font-weight: bold;text-decoration: none; text-shadow: none;position: absolute; top: 40%;left: 4%;right: 40%;"> Die sogenannte „Testbatterie“ ist eine Sammlung von einzelnen Aufgaben.
-                            Auf spielerische Weise wird damit Ihre aktuelle geistige Leistungsfähigkeit überprüft,
-                            z.B. in den Bereichen Gedächtnis, Aufmerksamkeit oder räumliche Wahrnehmung. </br> 
-                            Bevor es losgehen kann, möchten wir Sie noch auf einige wichtige Dinge aufmerksam machen. </br> 
-                            Drücken Sie auf "Weiter", um mehr zu erfahren.
-                        </p>
-        
-        
-                        <image src="css\images\btns-bg\bt-weiter.png" class="defaultButtonTest" />
-        
-                    </div>
-        
-        
-                </div> -->
-
+       
 
     </body>
 

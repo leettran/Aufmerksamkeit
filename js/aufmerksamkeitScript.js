@@ -338,6 +338,7 @@ function showNextTrialSubtask2() {
                     // increment counter
                     trialExecutionsCount2++;
                     failedReactions = 0;
+                    targetStimulationsCount = 0;
                     // reset pointers
                     hostingRectangleColorsPointerTrial = 0;
                     selectiveKreisColorsPointerTrial = 0;
@@ -431,6 +432,7 @@ function showNextTrialSubtask3() {
                     shapeTypesPointerTrial = 0;
                     shapeColorsPointerTrial = 0;
                     failedReactions = 0;
+                    targetStimulationsCount2 = 0;
                     
                     $("#shapeIdTrial").remove();
                     // go to hint page
